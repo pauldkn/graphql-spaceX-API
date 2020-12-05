@@ -40,7 +40,40 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return axios
           .get("https://api.spacexdata.com/v3/launches")
-          .then((res) => res.data);
+          .then((res) => res.data)
+          .catch((err) => console.log(err));
+      },
+    },
+    launch: {
+      type: LaunchType,
+      args: {
+        flight_number: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
+          .then((res) => res.data)
+          .catch((err) => console.log(err));
+      },
+    },
+    rockets: {
+      type: new GraphQLList(RocketType),
+      resolve(parent, args) {
+        return axios
+          .get("https://api.spacexdata.com/v3/rockets")
+          .then((res) => res.data)
+          .catch((err) => console.log(err));
+      },
+    },
+    rocket: {
+      type: RocketType,
+      args: {
+        rocket_id: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return axios.get(
+          `https://api.spacexdata.com/v3/rockets/${args.rocket_id}`
+        );
       },
     },
   },
