@@ -1,8 +1,11 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema");
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use(
   "/graphql",
@@ -12,8 +15,8 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Running on port ${PORT} :)`);
+app.listen(port, () => {
+  console.log(`Running on port ${port} :)`);
 });
