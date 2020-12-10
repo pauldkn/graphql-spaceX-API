@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { gql, useQuery } from "@apollo/client";
 import LaunchItem from "./LaunchItem";
+import MissionKey from "./MissionKey";
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -20,15 +21,20 @@ const LaunchesQuery = () => {
   if (error) return <h3>Error :/</h3>;
   console.log(data.launches);
 
-  return data.launches.map((launch, index) => (
-    <LaunchItem launch={launch} key={index} />
-  ));
+  return (
+    <Fragment>
+      {data.launches.map((launch, index) => (
+        <LaunchItem launch={launch} key={index} />
+      ))}
+    </Fragment>
+  );
 };
 
 export default function Launches() {
   return (
     <Fragment>
       <h1>Launches</h1>
+      <MissionKey />
       {LaunchesQuery()}
     </Fragment>
   );
