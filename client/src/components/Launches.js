@@ -17,8 +17,8 @@ const LAUNCHES_QUERY = gql`
 
 const LaunchesQuery = () => {
   const { loading, error, data } = useQuery(LAUNCHES_QUERY);
-  if (loading) return <h3>Loading...</h3>;
-  if (error) return <h3>Error :/</h3>;
+  if (loading) return <h3 className="tac">Loading...</h3>;
+  if (error) return <h3 className="tac">Error :/</h3>;
   console.log(data.launches);
 
   return (

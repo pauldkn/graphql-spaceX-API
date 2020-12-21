@@ -14,20 +14,20 @@ export default function LaunchItem({
   };
 
   return (
-    <div className="launch-item-container">
-      <div className="launch-details">
-        <h2>
-          Mission: <span className={statusColor}>{mission_name}</span>
-        </h2>
-        <p>Date: {formatedDate}</p>
-      </div>
-      <div className="launch-controls">
-        <Link to={`/launch/${flight_number}`}>
+    <Link to={`/launch/${flight_number}`}>
+      <div className="launch-item-container">
+        <div className="launch-details">
+          <h2>
+            Mission: <span className={statusColor}>{mission_name}</span>
+          </h2>
+          <p className="launch-date" >{formatedDate}</p>
+        </div>
+        <div className="launch-controls">
           <button className="btn" onClick={handleClick}>
-            Launch Details
+            Details
           </button>
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
