@@ -39,35 +39,39 @@ export default function Launch(props) {
     } = data.launch;
 
     return (
-      <div className="single-launch-details">
+      <section className="launch-section">
         <h1>
           <span className="md-grey">Mission:</span> {mission_name}
         </h1>
-        <h2>Launch Details</h2>
-        <ul>
-          <li>Flight number: {flight_number}</li>
-          <li>Launch Year: {launch_year}</li>
-          <li>
-            Launch Successful:{" "}
-            <span className={launch_success ? "green" : "red"}>
-              {launch_success ? "Yes" : "No"}
-            </span>
-          </li>
-        </ul>
-        <h2>Rocket Details</h2>
-        <ul>
-          <li>Rocket ID: {rocket_id}</li>
-          <li>Rocket Name: {rocket_name}</li>
-          <li>Rocket Type: {rocket_TYPE}</li>
-        </ul>
-      </div>
+        <div className="details">
+          <h2>Launch Details</h2>
+          <ul>
+            <li>Flight number: {flight_number}</li>
+            <li>Launch Year: {launch_year}</li>
+            <li>
+              Launch Successful:{" "}
+              <span className={launch_success ? "green" : "red"}>
+                {launch_success ? "Yes" : "No"}
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div className="details">
+          <h2>Rocket Details</h2>
+          <ul>
+            <li>Rocket ID: {rocket_id}</li>
+            <li>Rocket Name: {rocket_name}</li>
+            <li>Rocket Type: {rocket_TYPE}</li>
+          </ul>
+        </div>
+      </section>
     );
   };
 
   return (
     <Fragment>
       <Fragment>{LaunchQuery()}</Fragment>
-      <Link to="/" className="btn" style={{ margin: "0 auto" }}>
+      <Link to="/" className="btn" style={{ margin: "1rem auto" }}>
         Back
       </Link>
     </Fragment>

@@ -22,20 +22,16 @@ const LaunchesQuery = () => {
   console.log(data.launches);
 
   return (
-    <Fragment>
+    <section className="launches-section" >
+      <h1>Launches</h1>
+      <MissionKey />
       {data.launches.map((launch, index) => (
         <LaunchItem launch={launch} key={index} />
       ))}
-    </Fragment>
+    </section>
   );
 };
 
 export default function Launches() {
-  return (
-    <Fragment>
-      <h1>Launches</h1>
-      <MissionKey />
-      {LaunchesQuery()}
-    </Fragment>
-  );
+  return <Fragment>{LaunchesQuery()}</Fragment>;
 }
